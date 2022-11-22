@@ -1,7 +1,7 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Discrimination in the Incarceration System"
+author: "Anahi Villanueva"
+date: '2022-11-21'
 output: html_document
 ---
 
@@ -9,37 +9,59 @@ output: html_document
 source("../source/a4-helpers.R")
 source("../source/analysis.R")
 ```
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
+In this assignment I will be creating graphs and maps with the intention to show how the incarceration rates over the years between 1970 and 2018 have increased. With the data I will also be showing how this increment has been affecting mainly minority communities in the United States. This assignment has comparisons between races and gender and in summaries I have written about why I selected certain specific data such as Latinx (I am Mexican). 
 
 ## Introduction 
-[TODO]
+Incarceration separates many families. It makes many kids grow up in a household where they don’t get to see one of their parents often. Also, many get to grow up with a wrong idea of who their family member was due to all the wrong information that gets shared. The Vera Institute does research on the incarceration trends and releases this information to the public. The data that they collect, they share it with the world as they tend to inform people about racial disparities that occur and the impact that it has on many people. With this data there are direct stakeholders and indirect stakeholders. Direct stakeholders are those that directly interact with the system such as lawyers, people interested in knowing about incarceration information, and social justice movements. Indirect stakeholders are those that are affected by this system without using it themselves. Some indirect stakeholders may be the prisons from where this data was collected from and citizens. This data has really important information that should not be disregarded and that can be used to expose patterns of inequality.
 
 ## Data Summary 
-[TODO]
+I decided to focus my variable on gender and race. The first function that I did was to find the county that has the highest number of black people between the ages 15 to 64 in jail. This data goes all the way to the year 2018 so I filter my data to find the maximum but for this year. The county name that I received was `r max_black_pop_15to64`. This is important as it helps understand the patterns of inequality that exist in the prison system.
 
-[TODO ... other sections ... See Canvas for details]
+The other function that I did was to find what county has the least latinx people ages 15 to 64 in 2018, as it’s the closest year to 2022, in jail. I wanted to know this because I am Latina and also because the main goal of this project is to find data that will help find patterns of inequality and I feel like this can help. I got really interested especially in knowing this and I found out that the county was `r min_latinx_pop_15to64`.
 
-_All the very best with your work!_
+Another pattern of inequality that I think is important and that’s why I decided to do it is gender. I feel like there's a pattern of inequality on the amount of males that go to jail and the amount of females that go to jail. My understanding is that there are more males that go jail and the average was higher for males than for females. For males it was `r average_male` while the average for females was `r average_female`. This helps understand those inequalities that occur in the prison systems.
+
+## Growth of the U.S. Prison Population
+
+```{r graph, echo = FALSE, fig.cap = "**Figure 1:** The increasement of people in jail in the U.S. over the years between 1970 and 2018."}
+plot_jail_pop_for_us()
+```
+
+### **Summary Paragraph:**
+In this chart the key pattern that is revealed is that over the years the amount of people in jail grew in the United States. The graph shows how in the 1970s to around the 1980s the jail population stayed about the same. In the 1980s it started to increase little by little until like 2008 where it was at its highest and then it decreased a little yet it’s still really high. 
+
+## Growth of Prison Population by State
+
+```{r graph2, echo = FALSE, fig.cap = "**Figure 2:** The increasement of people in U.S. prisons over the years 1970 to 2018 based on states."}
+plot_jail_pop_by_states(states)
+```
+
+### **Summary Paragraph:**
+The states that I decided to show on this graph, I selected them at random. The only state that I selected intentionally was Washington and that’s because I live in Washington and I wanted to know how the population of people in jail has grown over the years (1970 to 2018). I wanted to have a visual representation and I think that this line graph does a really good job at showing this. Some key patterns that appear to be revealed in the chart is that for all the states the prison population has increased. This says a lot about the U.S. system of incarceration. 
+
+## Variable Comparison Revealing Patterns of Inequality
+
+```{r graph3, echo = FALSE, fig.cap = "**Figure 3:** This chart shows the average incarceration rates between Whites and Latinx over the years. The White population incarceration rate has increased over the years more than the one for the Latinx population."}
+inequality_between_latinx_whites
+```
+
+### **Summary Paragraph:**
+_Is the rate for the Latinx population incarceration higher than the one for the White population?_
+According to the data the White population incarceration rate has increased more than the Latinx population. There can be several reasons why this is what it is shown in the graph such as that more data was collected for the White population and that’s why the average was higher over the years. Another reason can be that more people identified as White or other race, rather than Latino or Latina and that's why there is a smaller rate for the Latinx population. In the chart some key patterns that are revealed is that between 1985 and 1990 the average incarceration rate for whites increased by a lot.
+
+## Variable Distributed Geographically Revealing Patterns of Inequality
+
+```{r map, echo = FALSE, fig.cap = "**Figure 4:** This map shows how the Latinx jail population is distributed geographically in the U.S."}
+Latinx_map
+```
+
+### **Summary Paragraph:**
+_What state has the highest jail population rate for Latinx?_
+With the Latinx population the state with the highest jail population rate is Utah. This map was created using the data from the incarceration_trends and it shows the incarceration rate from lowest (being the lightest colors) to highest (being the darkest colors). 
+
 
